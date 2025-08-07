@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="24dp">
+
+    <EditText
+        android:id="@+id/etQuestion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter Question"
+        android:textSize="15sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/etOptionA"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Option A"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@id/etQuestion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp"
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/etOptionB"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Option B"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@id/etOptionA"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp" />
+
+    <EditText
+        android:id="@+id/etOptionC"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Option C"
+        app:layout_constraintTop_toBottomOf="@id/etOptionB"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp" />
+
+    <EditText
+        android:id="@+id/etOptionD"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Option D"
+        app:layout_constraintTop_toBottomOf="@id/etOptionC"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp" />
+
+    <EditText
+        android:id="@+id/etCorrectAnswer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Correct Answer (A/B/C/D)"
+        app:layout_constraintTop_toBottomOf="@id/etOptionD"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="12dp" />
+
+    <Button
+        android:id="@+id/btnUpload"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Upload MCQ"
+        app:layout_constraintTop_toBottomOf="@id/etCorrectAnswer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

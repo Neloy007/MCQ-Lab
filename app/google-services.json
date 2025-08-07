@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "614887886123",
+    "project_id": "mcqtester-fea51",
+    "storage_bucket": "mcqtester-fea51.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:614887886123:android:9b7325e472e3e399e1496e",
+        "android_client_info": {
+          "package_name": "com.example.mcqtester"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_jihukWHdq-iAPz1EcAi8WTIxxmF0vfw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
