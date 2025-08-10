@@ -60,7 +60,12 @@ class SignUp : AppCompatActivity() {
                         "role" to role
                     )
 
-                    firestore.collection("users").document(uid).set(userMap)
+                    // Store in separate collections
+                    val collectionName = if (role == "admin") "admins" else "students"
+
+                    firestore.collection(collectionName)
+                        .document(uid)
+                        .set(userMap)
                         .addOnSuccessListener {
                             Toast.makeText(this, "Sign up successful!", Toast.LENGTH_SHORT).show()
                             val nextScreen = if (role == "admin") Admin::class.java else Student::class.java
@@ -77,7 +82,7 @@ class SignUp : AppCompatActivity() {
         }
 
         binding.goToLogin.setOnClickListener {
-            finish() // Simply finish SignUp to go back to Login
+            finish() // Go back to Login
         }
     }
 }

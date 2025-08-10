@@ -11,7 +11,6 @@ class McqAdapter(
     private val onOptionSelected: (questionIndex: Int, selectedOptionIndex: Int) -> Unit
 ) : RecyclerView.Adapter<McqAdapter.McqViewHolder>() {
 
-
     private val selectedOptions = mutableMapOf<Int, Int>()
 
     inner class McqViewHolder(val binding: ItemMcqBinding) : RecyclerView.ViewHolder(binding.root)
@@ -28,22 +27,44 @@ class McqAdapter(
         val b = holder.binding
 
         b.questionText.text = mcq.question
-        b.optionA.text = mcq.options.getOrNull(0) ?: ""
-        b.optionB.text = mcq.options.getOrNull(1) ?: ""
-        b.optionC.text = mcq.options.getOrNull(2) ?: ""
-        b.optionD.text = mcq.options.getOrNull(3) ?: ""
 
+        // Use explicit option fields, not a list
+        b.optionA.text = mcq.optionA
+        b.optionB.text = mcq.optionB
+        b.optionC.text = mcq.optionC
+        b.optionD.text = mcq.optionD
 
+        // Clear previous listener & selection to avoid recycle issues
+        b.optionsGroup.setOnCheckedChangeListener(null)
+        b.optionsGroup.clearCheck()
 
-        // Restore previous selection if any
-        when (selectedOptions[position]) {
-            0 -> b.optionA.isChecked = true
-            1 -> b.optionB.isChecked = true
-            2 -> b.optionC.isChecked = true
-            3 -> b.optionC.isChecked = true
-
+        // Restore selected option if any
+        selectedOptions[position]?.let { selectedIndex ->
+            val radioButtonId = when (selectedIndex) {
+                0 -> b.optionA.id
+                1 -> b.optionB.id
+                2 -> b.optionC.id
+                3 -> b.optionD.id
+                else -> -1
+            }
+            if (radioButtonId != -1) {
+                b.optionsGroup.check(radioButtonId)
+            }
         }
 
-
+        // Listen for selection changes
+        b.optionsGroup.setOnCheckedChangeListener { _, checkedId ->
+            val selectedIndex = when (checkedId) {
+                b.optionA.id -> 0
+                b.optionB.id -> 1
+                b.optionC.id -> 2
+                b.optionD.id -> 3
+                else -> -1
+            }
+            if (selectedIndex != -1) {
+                selectedOptions[position] = selectedIndex
+                onOptionSelected(position, selectedIndex)
+            }
+        }
     }
 }

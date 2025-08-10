@@ -1,4 +1,4 @@
-package com.example.mcqtester.adminside
+package com.example.mcqtester.adminside.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,7 @@ import com.example.mcqtester.databinding.ItemStudentResultBinding
 import com.example.mcqtestlab.model.StudentResult
 
 class StudentResultAdapter(
-    private val studentList: List<StudentResult>
+    private val results: List<StudentResult>
 ) : RecyclerView.Adapter<StudentResultAdapter.ResultViewHolder>() {
 
     inner class ResultViewHolder(val binding: ItemStudentResultBinding) : RecyclerView.ViewHolder(binding.root)
@@ -17,11 +17,13 @@ class StudentResultAdapter(
         return ResultViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ResultViewHolder, position: Int) {
-        val student = studentList[position]
-        holder.binding.tvStudentName.text = student.studentId
-        holder.binding.tvStudentScore.text = "Score: ${student.score} / ${student.total}"
-    }
+    override fun getItemCount() = results.size
 
-    override fun getItemCount(): Int = studentList.size
+    override fun onBindViewHolder(holder: ResultViewHolder, position: Int) {
+        val result = results[position]
+        val b = holder.binding
+
+        b.tvStudentName.text = result.studentId
+        b.tvStudentScore.text = "Score: ${result.score} / ${result.total}"
+    }
 }

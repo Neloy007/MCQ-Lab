@@ -14,6 +14,7 @@
         android:clipToPadding="false"
         android:paddingBottom="16dp"
         android:background="@color/white"
+        android:layout_marginTop="300dp"
         tools:listitem="@layout/item_mcq"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toTopOf="parent"
